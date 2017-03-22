@@ -1,9 +1,33 @@
+<!DOCTYPE html>
 <html>
-     <head>
-          <title>Jello World!</title>
-     </head>
+<title>Thermodynamic Calculator</title>
 
-     <body>
-          <p>Jello is teh good.</p>
-     </body>
+
+<body>
+
+<p>Type a chemical equation. Use no spaces between a molecule and its state of matter. Use → to divide the products from reactants.</p>
+
+<form id="equation">
+  First name: <input type="text" name="eqn" value="Equation"><br>
+  <input type="submit" value="Submit">
+</form> 
+
+<button onclick="myFunction()">Calculate!</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+    var x = document.getElementById("equation");
+    var text = "";
+    var i;
+    for (i = 0; i < x.length ;i++) {
+        text += x.elements[i].value + "<br>";
+    }
+    document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
 </html>
+
