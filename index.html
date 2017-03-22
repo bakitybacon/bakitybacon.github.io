@@ -18,9 +18,9 @@
 <p id="entropy">ΔS°: </p>
 
 <script>
+var jsondata;
 function calculateThermo() 
 {
-    var jsondata;
     loadJSON(function(response) 
     {
         jsondata = JSON.parse(response);
