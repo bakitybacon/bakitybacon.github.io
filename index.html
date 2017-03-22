@@ -8,22 +8,53 @@
 <p>Type a chemical equation. Use no spaces between a molecule and its state of matter. Use → to divide the products from reactants.</p>
 
 <form id="equation">
-  Equation <input type="text" name="eqn"><br>
+  Equation: <input type="text" name="eqn"><br>
 </form> 
 
-<button onclick="myFunction()">Calculate!</button>
+<button onclick="calculateThermo()">Calculate!</button>
 
-<p id="demo"></p>
+<p id="enthalpy">ΔH°: </p>
+<p id="gibbs">ΔG°: </p>
+<p id="entropy">ΔS°: </p>
 
 <script>
-function myFunction() {
+function init()
+{
+    loadJSON(function(response) 
+    {
+        var jsondata = JSON.parse(response);
+    });
+}
+function calculateThermo() 
+{
     var x = document.getElementById("equation");
-    var text = "";
-    var i;
-    for (i = 0; i < x.length ;i++) {
-        text += x.elements[i].value + "<br>";
-    }
-    document.getElementById("demo").innerHTML = text;
+    var rxn = x.elements[0].value;
+
+    var data = getCompoundByName(rxn);
+
+    document.getElementById("enthalpy").innerHTML = "ΔH°: " + data[0].enthalpy;
+}
+function getCompoundByName(name) {
+  return jsondata.filter(
+      function(data){ return jsondata.name == name }
+  );
+}
+
+var found = getCountryByCode('DZ');
+function loadJSON(callback) 
+{   
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', 'my_data.json', true); // Replace 'my_data' with the path to your file
+    xobj.onreadystatechange = function () 
+    {
+          if (xobj.readyState == 4 && xobj.status == "200") 
+          {
+            // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null);  
 }
 </script>
 
