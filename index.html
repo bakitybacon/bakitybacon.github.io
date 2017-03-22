@@ -19,15 +19,19 @@
 
 <script>
 var jsondata;
-function getJSON()
-{
-    loadJSON(function(response) 
-    {
-        jsondata = JSON.parse(response);
-    });
-}
 function calculateThermo() 
 {
+    if(typeof jsondata === 'undefined')
+    {
+            loadJSON(function(response) 
+            {
+                jsondata = JSON.parse(response);
+            });
+        while(typeof jsondata === 'undefined')
+        {
+            
+        }
+    }
     var x = document.getElementById("equation");
     var rxn = x.elements[0].value;
 
