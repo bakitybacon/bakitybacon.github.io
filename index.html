@@ -3,7 +3,7 @@
 <title>Thermodynamic Calculator</title>
 
 
-<body>
+<body onload="getJSON">
 
 <p>Type a chemical equation. Use no spaces between a molecule and its state of matter. Use → to divide the products from reactants.</p>
 
@@ -19,12 +19,15 @@
 
 <script>
 var jsondata;
-function calculateThermo() 
+function getJSON()
 {
     loadJSON(function(response) 
     {
         jsondata = JSON.parse(response);
     });
+}
+function calculateThermo() 
+{
     var x = document.getElementById("equation");
     var rxn = x.elements[0].value;
 
