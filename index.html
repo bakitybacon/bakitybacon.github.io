@@ -18,16 +18,13 @@
 <p id="entropy">ΔS°: </p>
 
 <script>
-function init()
-{
-    loadJSON(function(response) 
-    {
-        var jsondata = JSON.parse(response);
-    });
-}
 function calculateThermo() 
 {
-    init();
+    var jsondata;
+    loadJSON(function(response) 
+    {
+        jsondata = JSON.parse(response);
+    });
     var x = document.getElementById("equation");
     var rxn = x.elements[0].value;
 
