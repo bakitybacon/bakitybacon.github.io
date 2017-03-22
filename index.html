@@ -25,13 +25,12 @@ function calculateThermo()
     {
         jsondata = JSON.parse(response);
     });
-    document.getElementById("enthalpy").innerHTML = jsondata[0].name;
     var x = document.getElementById("equation");
     var rxn = x.elements[0].value;
 
     var data = getCompoundByName(rxn);
 
-    document.getElementById("enthalpy").innerHTML = "ΔH°: " + data[0].enthalpy;
+    document.getElementById("enthalpy").innerHTML = "ΔH°: " + jsondata[0].enthalpy;
 }
 function getCompoundByName(name) {
   return jsondata.filter(
