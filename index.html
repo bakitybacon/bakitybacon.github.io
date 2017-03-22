@@ -43,7 +43,7 @@ function loadJSON(callback)
 {   
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'my_data.json', true); // Replace 'my_data' with the path to your file
+    xobj.open('GET', 'enthalpy.json', true);
     xobj.onreadystatechange = function () 
     {
           if (xobj.readyState == 4 && xobj.status == "200") 
