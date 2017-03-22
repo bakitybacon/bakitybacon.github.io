@@ -25,7 +25,7 @@ function calculateThermo()
     {
         jsondata = JSON.parse(response);
     });
-    document.getElementById("enthalpy").innerHTML = "dab on em";
+    document.getElementById("enthalpy").innerHTML = jsondata[0].name;
     var x = document.getElementById("equation");
     var rxn = x.elements[0].value;
 
